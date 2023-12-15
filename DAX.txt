@@ -1,0 +1,20 @@
+HeadCount = COUNTROWS(HRData)
+
+ACTIVE = if(ISBLANK(CALCULATE([HeadCount],HRData[Status groups] = "Active")),0,CALCULATE([HeadCount],HRData[Status groups] = "Active"))
+
+Active % = DIVIDE([ACTIVE],[HeadCount],0)
+
+female = if(ISBLANK(CALCULATE([HeadCount],HRData[Gender] = "F")),0,CALCULATE([HeadCount],HRData[Gender] = "F"))
+
+Female% = DIVIDE([female],[HeadCount])
+
+male = if(ISBLANK(CALCULATE([HeadCount],HRData[Gender] = "M")),0,CALCULATE([HeadCount],HRData[Gender] = "M"))
+
+male% = DIVIDE([male],[HeadCount])
+
+Terminated = IF(ISBLANK(CALCULATE([HeadCount], HRData[Status groups]="Terminated ")),0,CALCULATE([HeadCount], HRData[Status groups]="Terminated "))
+
+
+Terminated % = DIVIDE([Terminated],[HeadCount])
+
+Total salary = sum(HRData[Salary])
